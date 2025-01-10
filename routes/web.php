@@ -14,3 +14,8 @@ Route::get('/', function () {
 
 // Mencoba Routes saya 'saya dari controller'
 Route::get('/Halo',[Halocontroller::class, 'coba']);
+
+// mencoba dari todo web.php
+Route::get('todo',function(){
+    return view('todo.app');
+});

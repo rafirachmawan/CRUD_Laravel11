@@ -1,1 +1,1 @@
-<h1>Halo {{ $nama }} Dari blade</h1>
+<h1>Halo {{ $namaorang }} Dari blade</h1>
