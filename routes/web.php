@@ -22,8 +22,8 @@ Route::get('/Halo',[Halocontroller::class, 'coba']);
 //     return view('todo.app');
 // });
 
-Route::get('todo', [TodoController::class, 'index']);
-Route::post('todo', [TodoController::class, 'store']);
+Route::get('/todo', [TodoController::class, 'index'])->name('todo');
+Route::post('/todo', [TodoController::class, 'store'])->name('todo.post');
 
 // Route::get('/todo',[TodoController::class,'index']);
 // Route::get('/todo',[TodoController::class,'index']);

@@ -40,6 +40,12 @@
             <div class="col-md-8">
              <div class="card mb-3">
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                        
+                    @endif
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -52,7 +58,7 @@
                         
                     @endif
                     <!-- 02. Form input data -->
-                    <form id="todo-form" action="{{ url('/todo') }}" method="post">
+                    <form id="todo-form" action="{{ route('todo.post') }}" method="post">
                         @csrf
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="task" id="todo-input"
@@ -78,11 +84,14 @@
                         </form>
                         
                         <ul class="list-group mb-4" id="todo-list">
+                            @foreach ($data as $item)
+                                
+                           
                             <!-- 04. Display Data -->
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span class="task-text">Coding</span>
+                                <span class="task-text">{{ $item->task }}</span>
                                 <input type="text" class="form-control edit-input" style="display: none;"
-                                    value="Coding">
+                                    value="{{ $item->task }}">
                                 <div class="btn-group">
                                     <button class="btn btn-danger btn-sm delete-btn">✕</button>
                                     <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="collapse"
@@ -95,7 +104,7 @@
                                     <div>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" name="task"
-                                                value="Coding">
+                                                value="{{ $item->task }}">
                                             <button class="btn btn-outline-primary" type="button">Update</button>
                                         </div>
                                     </div>
@@ -113,6 +122,7 @@
                                     </div>
                                 </form>
                             </li>
+                            @endforeach
                         </ul>
                         
                         
