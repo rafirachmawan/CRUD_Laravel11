@@ -24,6 +24,7 @@ Route::get('/Halo',[Halocontroller::class, 'coba']);
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo');
 Route::post('/todo', [TodoController::class, 'store'])->name('todo.post');
+Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
 
 // Route::get('/todo',[TodoController::class,'index']);
 // Route::get('/todo',[TodoController::class,'index']);
