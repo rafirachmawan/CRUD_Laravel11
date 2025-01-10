@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Todo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use app\Models\Todo;
 
 class TodoController extends Controller
 {
@@ -12,7 +13,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-      return view('todo.app');   
+        return view('todo.app');
     }
 
     /**
@@ -28,10 +29,19 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'task' => 'required|min:3'
-        // ]);
-        dd($request);
+       $request->validate([
+        'task' =>'required|min:3|max:25'
+       ],[
+        'task.required' =>'isian task wajib diisikan',
+        'task.min' =>'minimal isian untuk task adalah 3 karakter',
+        'task.max' =>'maximal isian untuk task adalah 25 karakter'
+       ]);
+
+       $data = [
+        'task' => $request->input('task')
+       ];
+
+     Todo::create($data);
     }
 
     /**

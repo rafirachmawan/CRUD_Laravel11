@@ -18,9 +18,12 @@ Route::get('/', function () {
 Route::get('/Halo',[Halocontroller::class, 'coba']);
 
 // mencoba dari todo web.php
-Route::get('/todo',function(){
-    return view('todo.app');
-});
+// Route::get('todo',function(){
+//     return view('todo.app');
+// });
+
+Route::get('todo', [TodoController::class, 'index']);
+Route::post('todo', [TodoController::class, 'store']);
 
 // Route::get('/todo',[TodoController::class,'index']);
 // Route::get('/todo',[TodoController::class,'index']);
