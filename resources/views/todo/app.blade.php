@@ -97,7 +97,8 @@
                                 <input type="text" class="form-control edit-input" style="display: none;"
                                     value="{{ $item->task }}">
                                 <div class="btn-group">
-                                    <form action="{{ route('todo.delete',['id' =>$item->id]) }}" method="POST">
+                                    <form action="{{ route('todo.delete',['id' =>$item->id]) }}" method="POST"
+                                        onsubmit="return confirm('Yakin mau menghapus data ini ?')">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger btn-sm delete-btn">✕</button>
